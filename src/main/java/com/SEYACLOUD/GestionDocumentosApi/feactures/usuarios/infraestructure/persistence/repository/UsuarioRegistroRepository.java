@@ -1,0 +1,58 @@
+package com.SEYACLOUD.GestionDocumentosApi.feactures.usuarios.infraestructure.persistence.repository;
+
+import com.SEYACLOUD.GestionDocumentosApi.feactures.usuarios.application.dto.request.RequestRegistroUsuario;
+import com.SEYACLOUD.GestionDocumentosApi.feactures.usuarios.application.dto.response.ResponseRegistroUsuario;
+import com.SEYACLOUD.GestionDocumentosApi.feactures.usuarios.domain.interfaces.IUsuarioRegistro;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.sql.DataSource;
+import java.sql.CallableStatement;
+import java.sql.Connection;
+import java.sql.SQLException;
+
+@Repository
+@Transactional("sqlServerTransactionManager")
+public class UsuarioRegistroRepository implements IUsuarioRegistro {
+
+    @Autowired
+    @Qualifier("SQLSERVER")
+    private DataSource con;
+
+
+    @Override
+    public ResponseRegistroUsuario registrarUsuario(RequestRegistroUsuario request, long idUserAutenticado) {
+        ResponseRegistroUsuario rpt = new ResponseRegistroUsuario();
+
+        String SQL = "{ call SEGURIDAD.sp_RegistroUsuario(?,?,?,?,?) }";
+
+        try (Connection conn = con.getConnection();
+             CallableStatement pstmt = conn.prepareCall(SQL)) {
+
+            pstmt.setString(1, request.getUsuario());
+            pstmt.setString(2, request.getPassowrd());
+            pstmt.setLong(3, request.getIdRol());
+            pstmt.setLong(4, request.getIdEmpleado());
+            pstmt.setLong(5, idUserAutenticado);
+
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                rpt.setExito(true);
+                rpt.setMessage("Usuario insertado correctamente.");
+            } else {
+                rpt.setExito(false);
+                rpt.setMessage("No se insertó el usuario.");
+            }
+
+        } catch (SQLException e) {
+            rpt.setExito(false);
+            rpt.setMessage(e.getMessage());
+        }
+
+        return rpt;
+    }
+
+}

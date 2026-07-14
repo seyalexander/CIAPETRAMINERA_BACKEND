@@ -1,0 +1,11 @@
+package com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.domain.interfaces;
+
+import com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.application.dto.request.RequestEditarAllContactoCliente;
+import com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.application.dto.request.RequestEditarEstadoContactoCliente;
+import com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.application.dto.response.ResponseEditarAllContactoCliente;
+import com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.application.dto.response.ResponseEditarEstadoContactoCliente;
+
+public interface IContactoClienteEdicion {
+    ResponseEditarAllContactoCliente EditarAllContactoCliente(RequestEditarAllContactoCliente request);
+    ResponseEditarEstadoContactoCliente EditarEstadoContactoCliente(RequestEditarEstadoContactoCliente request, int estado);
+}

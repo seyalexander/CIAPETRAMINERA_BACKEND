@@ -1,0 +1,8 @@
+package com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.domain.interfaces;
+
+import com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.application.dto.request.RequestRegistroContactoCliente;
+import com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.application.dto.response.ResponseRegistroContactoCliente;
+
+public interface IContactoClienteRegistro {
+    ResponseRegistroContactoCliente RegistroContactoCliente(RequestRegistroContactoCliente request);
+}
