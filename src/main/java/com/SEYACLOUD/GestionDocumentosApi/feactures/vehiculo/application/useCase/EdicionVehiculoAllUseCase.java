@@ -24,6 +24,7 @@ public class EdicionVehiculoAllUseCase {
             }
 
             long userId = SecurityUtils.getCurrentUserId();
+
             ResponseEditarAllVehiculo response = VehiculosService.editarAllVehiculo(request);
             if(response.isExito()){}
 

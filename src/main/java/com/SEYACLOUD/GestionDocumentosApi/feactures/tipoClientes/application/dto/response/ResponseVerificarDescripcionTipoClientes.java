@@ -5,6 +5,6 @@ import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.infraestructure
 import lombok.Data;
 
 @Data
-public class ResponseDetalleTipoClientes extends ResponseGeneral {
+public class ResponseVerificarDescripcionTipoClientes extends ResponseGeneral {
     private TipoClientesModel tipoClientes;
 }

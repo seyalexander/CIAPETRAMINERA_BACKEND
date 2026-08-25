@@ -1,8 +1,11 @@
 package com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.domain.interfaces;
 
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.application.dto.request.RequestDetalleTipoClientes;
+import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.application.dto.request.RequestVerificarDescripcionTipoClientes;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.application.dto.response.ResponseDetalleTipoClientes;
+import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.application.dto.response.ResponseVerificarDescripcionTipoClientes;
 
 public interface ITipoClientesDetalle {
-    ResponseDetalleTipoClientes DetalleTipoClientes(RequestDetalleTipoClientes request);
+    ResponseDetalleTipoClientes detalleTipoClientes(RequestDetalleTipoClientes request);
+    ResponseVerificarDescripcionTipoClientes verificarDescripcion(RequestVerificarDescripcionTipoClientes request);
 }

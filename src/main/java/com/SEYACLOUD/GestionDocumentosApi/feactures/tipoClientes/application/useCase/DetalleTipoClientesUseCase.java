@@ -18,7 +18,7 @@ public class DetalleTipoClientesUseCase {
 
             RequestDetalleTipoClientes request = new RequestDetalleTipoClientes();
             request.setIdTipoClientes(idTipoCliente);
-            ResponseDetalleTipoClientes response = tipoClientesService.DetalleTipoClientes(request);
+            ResponseDetalleTipoClientes response = tipoClientesService.detalleTipoClientes(request);
             if(response.isExito()){}
 
             return response;

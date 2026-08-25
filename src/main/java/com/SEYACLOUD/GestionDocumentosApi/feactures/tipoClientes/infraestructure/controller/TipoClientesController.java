@@ -66,14 +66,14 @@ public class TipoClientesController {
     }
 
     @PutMapping
-    @Operation(summary = "Editar TipoClientes", description = "Permite editar todos los datos de TipoClientes")
+    @Operation(summary = "Editar TipoClientes", description = "Permite editar todos los datos de Tipo Clientes")
     public ResponseEntity<ResponseEditarAllTipoClientes> edicionAllTipoClientes(@Validated @RequestBody RequestEditarAllTipoClientes request) {
         ResponseEditarAllTipoClientes response = edicionTipoClientesUseCase.EdicionAllTipoClientes(request);
 
         if (response.isExito()) {
             NotificacionTipoClienteDTO notificacion = new NotificacionTipoClienteDTO();
             notificacion.setTipo(String.valueOf(TipoNotificacion.EDICION));
-            notificacion.setMensaje("Registro de TipoClientes editado");
+            notificacion.setMensaje("Registro de Tipo Clientes editado");
             notificacionTipoClienteService.enviarNotificacionTipoCliente_Edicion(notificacion);
             return ResponseEntity.ok(response);
         }

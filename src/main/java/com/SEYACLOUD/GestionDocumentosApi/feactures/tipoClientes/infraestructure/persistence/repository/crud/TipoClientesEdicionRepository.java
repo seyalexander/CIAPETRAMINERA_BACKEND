@@ -27,7 +27,7 @@ public class TipoClientesEdicionRepository implements ITipoClientesEdicion {
     private DataSource con;
 
     @Override
-    public ResponseEditarAllTipoClientes EditarAllTipoClientes(RequestEditarAllTipoClientes request) {
+    public ResponseEditarAllTipoClientes EditarAllTipoClientes(RequestEditarAllTipoClientes request, long idUserAutenticado) {
         ResponseEditarAllTipoClientes rpt = new ResponseEditarAllTipoClientes();
         String SQL = "{ call CLIENTES.sp_EditarTipoCliente(?,?,?) }";
 

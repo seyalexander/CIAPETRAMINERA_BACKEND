@@ -1,7 +1,9 @@
 package com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.infraestructure.persistence.repository.crud;
 
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.application.dto.request.RequestDetalleTipoClientes;
+import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.application.dto.request.RequestVerificarDescripcionTipoClientes;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.application.dto.response.ResponseDetalleTipoClientes;
+import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.application.dto.response.ResponseVerificarDescripcionTipoClientes;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.domain.interfaces.ITipoClientesDetalle;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.infraestructure.persistence.model.TipoClientesModel;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +28,7 @@ public class TipoClientesDetalleRepository implements ITipoClientesDetalle {
     private DataSource con;
 
     @Override
-    public ResponseDetalleTipoClientes DetalleTipoClientes(RequestDetalleTipoClientes request) {
+    public ResponseDetalleTipoClientes detalleTipoClientes(RequestDetalleTipoClientes request) {
         ResponseDetalleTipoClientes response = new ResponseDetalleTipoClientes();
         String SQL = "{ call CLIENTES.sp_ObtenerTipoClientePorId(?) }";
 
@@ -54,6 +56,39 @@ public class TipoClientesDetalleRepository implements ITipoClientesDetalle {
             response.setExito(false);
             response.setMessage(e.getMessage());
             log.error("Error en CONFIGURACION.sp_ObtenerTipoClientesPorId", e);
+        }
+        return response;
+    }
+
+    @Override
+    public ResponseVerificarDescripcionTipoClientes verificarDescripcion(RequestVerificarDescripcionTipoClientes request) {
+        ResponseVerificarDescripcionTipoClientes response = new ResponseVerificarDescripcionTipoClientes();
+        String SQL = "{ call CLIENTES.sp_ObtenerTipoClientePorDescripcion(?) }";
+
+        try (Connection conn = con.getConnection();
+             CallableStatement pstmt = conn.prepareCall(SQL)) {
+
+            pstmt.setString(1, request.getDescripcion());
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    TipoClientesModel item = new TipoClientesModel();
+                    item.setIdTipoCliente(rs.getLong("idTipoCliente"));
+                    item.setDescripcion(rs.getString("descripcion"));
+                    item.setEstado(rs.getInt("estado"));
+
+                    response.setExito(true);
+                    response.setMessage("TipoClientes obtenido correctamente.");
+                    response.setTipoClientes(item);
+                } else {
+                    response.setExito(false);
+                    response.setMessage("No se encontró TipoClientes.");
+                }
+            }
+        } catch (SQLException e) {
+            response.setExito(false);
+            response.setMessage(e.getMessage());
+            log.error("Error en CONFIGURACION.sp_ObtenerTipoClientePorDescripcion", e);
         }
         return response;
     }

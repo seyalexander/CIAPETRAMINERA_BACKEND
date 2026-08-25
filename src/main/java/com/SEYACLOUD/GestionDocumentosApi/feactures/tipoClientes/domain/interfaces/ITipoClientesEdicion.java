@@ -6,6 +6,6 @@ import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.application.dto
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoClientes.application.dto.response.ResponseEditarEstadoTipoClientes;
 
 public interface ITipoClientesEdicion {
-    ResponseEditarAllTipoClientes EditarAllTipoClientes(RequestEditarAllTipoClientes request);
+    ResponseEditarAllTipoClientes EditarAllTipoClientes(RequestEditarAllTipoClientes request, long idUserAutenticado);
     ResponseEditarEstadoTipoClientes EditarEstadoTipoClientes(RequestEditarEstadoTipoClientes request, int estado);
 }

@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class TipoClientesService  implements ITipoClientesDetalle, ITipoClientesEdicion, ITipoClientesListado, ITipoClientesRegistro {
+
     private final TipoClientesDetalleRepository tipoClientesDetalleRepository;
     private final TipoClientesEdicionRepository tipoClientesEdicionRepository;
     private final TipoClientesListadoRepository tipoClientesListadoRepository;
@@ -34,29 +35,35 @@ public class TipoClientesService  implements ITipoClientesDetalle, ITipoClientes
     }
 
     @Override
-    @Cacheable(value = "tipoClientes", key = "#request.estado")
+    @Cacheable(value = "tipoClientes_lista", key = "#request.estado")
     public ResponseListaTipoClientes ListaTipoClientes(RequestListaTipoClientes request) {
         return tipoClientesListadoRepository.ListaTipoClientes(request);
     }
 
     @Override
-    @CacheEvict(value = {"tipoClientes", "tipoClientes_detalle"}, allEntries = true)
+    @CacheEvict(value = {"tipoClientes_lista", "tipoClientes_detalle", "tipoClientes_descripcion"}, allEntries = true)
     public ResponseRegistroTipoClientes RegistroTipoClientes(RequestRegistroTipoClientes request) {
         return tipoClientesRegistroRepository.RegistroTipoClientes(request);
     }
     @Override
-    @CacheEvict(value = {"tipoClientes", "tipoClientes_detalle"}, allEntries = true)
-    public ResponseEditarAllTipoClientes EditarAllTipoClientes(RequestEditarAllTipoClientes request) {
-        return tipoClientesEdicionRepository.EditarAllTipoClientes(request);
+    @CacheEvict(value = {"tipoClientes_lista", "tipoClientes_detalle", "tipoClientes_descripcion"}, allEntries = true)
+    public ResponseEditarAllTipoClientes EditarAllTipoClientes(RequestEditarAllTipoClientes request, long idUserAutenticado) {
+        return tipoClientesEdicionRepository.EditarAllTipoClientes(request, idUserAutenticado);
     }
     @Override
-    @CacheEvict(value = {"tipoClientes", "tipoClientes_detalle"}, allEntries = true)
+    @CacheEvict(value = {"tipoClientes_lista", "tipoClientes_detalle", "tipoClientes_descripcion"}, allEntries = true)
     public ResponseEditarEstadoTipoClientes EditarEstadoTipoClientes(RequestEditarEstadoTipoClientes request, int estado) {
         return tipoClientesEdicionRepository.EditarEstadoTipoClientes(request, estado);
     }
     @Override
-    @Cacheable(value = "tipoClientes", key = "#request.idTipoCliente")
-    public ResponseDetalleTipoClientes DetalleTipoClientes(RequestDetalleTipoClientes request) {
-        return tipoClientesDetalleRepository.DetalleTipoClientes(request);
+    @Cacheable(value = "tipoClientes_detalle", key = "#request.idTipoCliente")
+    public ResponseDetalleTipoClientes detalleTipoClientes(RequestDetalleTipoClientes request) {
+        return tipoClientesDetalleRepository.detalleTipoClientes(request);
+    }
+
+    @Override
+    @Cacheable(value = "tipoClientes_descripcion", key = "#request.descripcion")
+    public ResponseVerificarDescripcionTipoClientes verificarDescripcion(RequestVerificarDescripcionTipoClientes request) {
+        return tipoClientesDetalleRepository.verificarDescripcion(request);
     }
 }
