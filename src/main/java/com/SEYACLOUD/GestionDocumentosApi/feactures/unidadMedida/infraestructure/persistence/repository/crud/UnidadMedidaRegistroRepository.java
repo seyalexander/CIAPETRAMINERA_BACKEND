@@ -26,16 +26,14 @@ public class UnidadMedidaRegistroRepository implements IUnidadMedidaRegistro {
     @Override
     public ResponseRegistroUnidadMedida RegistroUnidadMedida(RequestRegistroUnidadMedida request) {
         ResponseRegistroUnidadMedida rpt = new ResponseRegistroUnidadMedida();
-        String SQL = "{ call PRODUCTOS.sp_RegistroUnidadMedida(?,?,?,?) }";
+        String SQL = "{ call CONFIGURACION.sp_RegistroUnidadMedida (?,?,?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {
             setParameter(pstmt, 1, request.getDescripcion());
             setParameter(pstmt, 2, request.getSiglas());
             Long userId = 1L;
-            Long empresaId = 1L;
             pstmt.setLong(3, userId);
-            pstmt.setLong(4, empresaId);
 
             int rowsAffected = pstmt.executeUpdate();
 

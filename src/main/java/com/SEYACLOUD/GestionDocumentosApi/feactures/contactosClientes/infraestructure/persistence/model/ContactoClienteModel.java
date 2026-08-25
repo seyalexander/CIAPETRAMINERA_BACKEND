@@ -7,7 +7,6 @@ import java.io.Serializable;
 
 @Data
 public class ContactoClienteModel extends AuditableModel implements Serializable {
-
     private long idContactoCliente;
     private long idCliente;
     private String nombreContacto;

@@ -30,14 +30,12 @@ public class UnidadMedidaListaRepository implements IUnidadMedidaListado {
         ResponseListaUnidadMedida rpt = new ResponseListaUnidadMedida();
         List<UnidadMedidaModel> unidadesMedidas = new ArrayList<>();
 
-        String SQL = "{ call PRODUCTOS.sp_ListarUnidadMedida (?,?) }";
+        String SQL = "{ call CONFIGURACION.sp_ListarUnidadMedida  (?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {
 
             pstmt.setInt(1, request.getEstado());
-            Long empresaId = 1L;
-            pstmt.setLong(2, empresaId);
 
             ResultSet rs = pstmt.executeQuery();
 

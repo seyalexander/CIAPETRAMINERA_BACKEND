@@ -3,8 +3,10 @@ package com.SEYACLOUD.GestionDocumentosApi.feactures.vehiculo.infraestructure.pe
 import com.SEYACLOUD.GestionDocumentosApi.common.model.AuditableModel;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
-public class VehiculoModel extends AuditableModel {
+public class VehiculoModel extends AuditableModel implements Serializable {
     private Long idVehiculo;
     private Long idCliente;
     private Long idTransportista;

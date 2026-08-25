@@ -31,7 +31,7 @@ public class TipoVehiculoDetalleRepository implements ITipoVehiculoDetalle {
         ResponseDetalleTipoVehiculo response = new ResponseDetalleTipoVehiculo();
         TipoVehiculoModel objeto = null;
 
-        String SQL = "{ call SEGURIDAD.sp_ObtenerRolPorId(?) }";
+        String SQL = "{ call OPERACIONES.sp_DetalleTipoVehiculos(?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {
@@ -78,7 +78,7 @@ public class TipoVehiculoDetalleRepository implements ITipoVehiculoDetalle {
 
         } catch (SQLException e) {
             response.setExito(false);
-            response.setMessage("Error al obtener el Tipo Vehicul");
+            response.setMessage("Error al obtener el Tipo Vehiculo");
             log.error("Error en SEGURIDAD.sp_ObtenerTipoVehiculo", e);
         }
 

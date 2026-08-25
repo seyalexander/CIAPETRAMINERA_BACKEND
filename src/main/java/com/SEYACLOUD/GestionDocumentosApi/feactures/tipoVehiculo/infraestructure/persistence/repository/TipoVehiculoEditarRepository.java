@@ -61,7 +61,7 @@ public class TipoVehiculoEditarRepository implements ITipoVehiculoEdicion {
     public ResponseEditarEstadoTipoVehiculo EditarEstadoTipoVehiculo(RequestEditarEstadoTipoVehiculo request, int estado, long idUserAutenticado) {
         ResponseEditarEstadoTipoVehiculo rpt = new ResponseEditarEstadoTipoVehiculo();
 
-        String SQL = "{ call SEGURIDAD.sp_EditarUsuario_Estado(?,?,?) }";
+        String SQL = "{ call OPERACIONES.sp_EditarEstadoTipoVehiculos(?,?,?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {
@@ -74,10 +74,10 @@ public class TipoVehiculoEditarRepository implements ITipoVehiculoEdicion {
 
             if (rowsAffected > 0) {
                 rpt.setExito(true);
-                rpt.setMessage("Usuario actualizado correctamente.");
+                rpt.setMessage("Tipo Vehículo actualizado correctamente.");
             } else {
                 rpt.setExito(false);
-                rpt.setMessage("No se actualizó el usuario.");
+                rpt.setMessage("No se actualizó el Tipo Vehículo.");
             }
 
         } catch (SQLException e) {

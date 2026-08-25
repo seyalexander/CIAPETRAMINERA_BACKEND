@@ -19,18 +19,6 @@ public class EdicionUnidadMedidaEstadoUseCase {
 
     public ResponseEditarEstadoUnidadMedida AnularUnidadMedida(Long idUnidadMedida) {
         try {
-            RequestDetalleUnidadMedida requestDetalle = new RequestDetalleUnidadMedida();
-            requestDetalle.setIdUnidadMedida(idUnidadMedida);
-
-            ResponseDetalleUnidadMedida detalleBD= unidadMedidaService.DetalleUnidadMedida(requestDetalle);
-
-            if (!detalleBD.isExito() || detalleBD.getUnidadMedida() == null) {
-                throw new IllegalArgumentException("La unidad de medida no existe.");
-            }
-
-            if (Objects.equals(detalleBD.getUnidadMedida().getEstado(), 0)) {
-                throw new IllegalArgumentException("La unidad medida ya se encuentra anulada.");
-            }
 
             RequestEditarEstadoUnidadMedida request = new RequestEditarEstadoUnidadMedida();
             request.setIdUnidadMedida(idUnidadMedida);
@@ -56,18 +44,6 @@ public class EdicionUnidadMedidaEstadoUseCase {
 
     public ResponseEditarEstadoUnidadMedida ActivarUnidadMedida(Long idUnidadMedida) {
         try {
-            RequestDetalleUnidadMedida requestDetalle = new RequestDetalleUnidadMedida();
-            requestDetalle.setIdUnidadMedida(idUnidadMedida);
-
-            ResponseDetalleUnidadMedida detalleBD= unidadMedidaService.DetalleUnidadMedida(requestDetalle);
-
-            if (!detalleBD.isExito() || detalleBD.getUnidadMedida() == null) {
-                throw new IllegalArgumentException("La unidad de medida no existe.");
-            }
-
-            if (Objects.equals(detalleBD.getUnidadMedida().getEstado(), 1)) {
-                throw new IllegalArgumentException("La unidad medida ya se encuentra activada.");
-            }
 
             RequestEditarEstadoUnidadMedida request = new RequestEditarEstadoUnidadMedida();
             request.setIdUnidadMedida(idUnidadMedida);
@@ -83,7 +59,7 @@ public class EdicionUnidadMedidaEstadoUseCase {
             return response;
         }
         catch (Exception e){
-            String mensajeError = "Error inesperado al anular la unidad de medida: " + e.getMessage();
+            String mensajeError = "Error inesperado al activar la unidad de medida: " + e.getMessage();
             System.err.println("[ERROR] " + mensajeError);
             ResponseEditarEstadoUnidadMedida response = new ResponseEditarEstadoUnidadMedida();
             response.setExito(false);

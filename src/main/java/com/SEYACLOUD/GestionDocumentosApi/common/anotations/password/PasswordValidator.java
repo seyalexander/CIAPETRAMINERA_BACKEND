@@ -13,6 +13,6 @@ public class PasswordValidator implements ConstraintValidator<ValidPassword, Str
                 value.matches(".*[A-Z].*") &&
                 value.matches(".*[a-z].*") &&
                 value.matches(".*\\d.*") &&
-                value.matches(".*[@#$%^&+=!].*");
+                value.matches(".*[@#$%^&+=!*].*");
     }
 }

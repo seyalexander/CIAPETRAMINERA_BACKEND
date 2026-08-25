@@ -1,4 +1,6 @@
 package com.SEYACLOUD.GestionDocumentosApi.feactures.vehiculo.application.dto.response;
 
-public class ResponseEditarAllVehiculo {
+import com.SEYACLOUD.GestionDocumentosApi.common.Response.ResponseGeneral;
+
+public class ResponseEditarAllVehiculo extends ResponseGeneral {
 }

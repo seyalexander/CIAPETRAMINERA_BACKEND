@@ -29,14 +29,12 @@ public class UnidadMedidaDetalleRepository implements IUnidadMedidaDetalle {
     public ResponseDetalleUnidadMedida DetalleUnidadMedida(RequestDetalleUnidadMedida request) {
         ResponseDetalleUnidadMedida response = new ResponseDetalleUnidadMedida();
 
-        String SQL = "{ call PRODUCTOS.sp_ObtenerUnidadMedidaPorId(?,?) }";
+        String SQL = "{ call CONFIGURACION.sp_ObtenerUnidadMedidaPorId (?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {
 
             setParameter(pstmt, 1, request.getIdUnidadMedida());
-            Long empresaId = 1L;
-            pstmt.setLong(2, empresaId);
 
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
@@ -64,7 +62,7 @@ public class UnidadMedidaDetalleRepository implements IUnidadMedidaDetalle {
         } catch (SQLException e) {
             response.setExito(false);
             response.setMessage(e.getMessage());
-            log.error("Error en PRODUCTOS.sp_ObtenerUnidadMedidaPorId", e);
+            log.error("Error en CONFIGURACION.sp_ObtenerUnidadMedidaPorId", e);
         }
         return response;
     }

@@ -1,4 +1,6 @@
 package com.SEYACLOUD.GestionDocumentosApi.feactures.vehiculo.application.dto.response;
 
-public class ResponseRegistroVehiculo {
+import com.SEYACLOUD.GestionDocumentosApi.common.Response.ResponseGeneral;
+
+public class ResponseRegistroVehiculo extends ResponseGeneral {
 }

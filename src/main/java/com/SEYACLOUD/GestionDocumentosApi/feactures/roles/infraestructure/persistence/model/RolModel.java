@@ -1,5 +1,6 @@
 package com.SEYACLOUD.GestionDocumentosApi.feactures.roles.infraestructure.persistence.model;
 
+import com.SEYACLOUD.GestionDocumentosApi.common.model.AuditableModel;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -7,22 +8,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
-public class RolModel implements Serializable {
+public class RolModel extends AuditableModel implements Serializable {
     private long idRol;
     private String descripcion;
     private int estado;
-
-    // Auditoría
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
-    private LocalDateTime fechaCreacion;
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
-    private LocalDateTime fechaEdicion;
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
-    private LocalDateTime fechaAnulacion;
-    private long idUsuarioCreacion;
-    private long idUsuarioEdicion;
-    private long idUsuarioAnulacion;
-    private String usuarioCreacion;
-    private String usuarioEdicion;
-    private String usuarioAnulacion;
 }

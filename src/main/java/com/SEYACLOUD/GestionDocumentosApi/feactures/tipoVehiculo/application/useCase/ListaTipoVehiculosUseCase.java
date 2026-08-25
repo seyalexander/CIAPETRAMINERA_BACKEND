@@ -17,6 +17,11 @@ public class ListaTipoVehiculosUseCase {
 
     public ResponseListaTipoVehiculo ListaTipoVehiculo(RequestListaTipoVehiculo request) {
         try {
+            if (request == null) {
+                String mensajeError = "El valor del estado es obligatorio";
+                throw new IllegalArgumentException(mensajeError);
+            }
+
             ResponseListaTipoVehiculo response = tipoVehiculoService.ListaTipoVehiculos(request);
             if(response.isExito()){}
 

@@ -7,7 +7,5 @@ import java.io.Serializable;
 
 @Data
 public class ChoferModel extends AuditableModel implements Serializable {
-
     private long idConductor;
-
 }

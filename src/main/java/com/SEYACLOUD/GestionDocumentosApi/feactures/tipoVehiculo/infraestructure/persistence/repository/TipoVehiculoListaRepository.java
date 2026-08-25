@@ -1,7 +1,5 @@
 package com.SEYACLOUD.GestionDocumentosApi.feactures.tipoVehiculo.infraestructure.persistence.repository;
 
-import com.SEYACLOUD.GestionDocumentosApi.feactures.roles.application.dto.response.ResponseListaRol;
-import com.SEYACLOUD.GestionDocumentosApi.feactures.roles.infraestructure.persistence.model.RolModel;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoVehiculo.application.dto.request.RequestListaTipoVehiculo;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoVehiculo.application.dto.response.ResponseListaTipoVehiculo;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoVehiculo.domain.interfaces.ITipoVehiculoLista;
@@ -32,7 +30,7 @@ public class TipoVehiculoListaRepository implements ITipoVehiculoLista {
         ResponseListaTipoVehiculo rpt = new ResponseListaTipoVehiculo();
         List<TipoVehiculoModel> familias = new ArrayList<>();
 
-        String SQL = "{ call OPERACIONES.sp_ListarTipoVehiculo (?) }";
+        String SQL = "{ call OPERACIONES.sp_ListarTipoVehiculos (?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {
@@ -44,7 +42,7 @@ public class TipoVehiculoListaRepository implements ITipoVehiculoLista {
             while (rs.next()) {
                 TipoVehiculoModel rol = new TipoVehiculoModel();
 
-                rol.setIdTipoVehiculo(rs.getLong("idRol"));
+                rol.setIdTipoVehiculo(rs.getLong("idTipoVehiculo"));
                 rol.setDescripcion(rs.getString("descripcion"));
                 rol.setEstado(rs.getInt("estado"));
                 rol.setFechaCreacion(

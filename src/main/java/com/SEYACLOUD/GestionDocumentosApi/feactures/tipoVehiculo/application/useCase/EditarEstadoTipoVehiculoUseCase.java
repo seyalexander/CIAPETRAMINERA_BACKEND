@@ -1,9 +1,7 @@
 package com.SEYACLOUD.GestionDocumentosApi.feactures.tipoVehiculo.application.useCase;
 
 import com.SEYACLOUD.GestionDocumentosApi.config.SecurityUtils;
-import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoVehiculo.application.dto.request.RequestEditarAllTipoVehiculo;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoVehiculo.application.dto.request.RequestEditarEstadoTipoVehiculo;
-import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoVehiculo.application.dto.response.ResponseEditarAllTipoVehiculo;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoVehiculo.application.dto.response.ResponseEditarEstadoTipoVehiculo;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoVehiculo.domain.services.TipoVehiculoService;
 import org.springframework.stereotype.Component;
@@ -37,7 +35,7 @@ public class EditarEstadoTipoVehiculoUseCase {
             return response;
         }
         catch (Exception e){
-            String mensajeError = "Error inesperado al editar al usuario: " + e.getMessage();
+            String mensajeError = "Error inesperado al anular el Tipo Vehículo: " + e.getMessage();
             System.err.println("[ERROR] " + mensajeError);
             ResponseEditarEstadoTipoVehiculo response = new ResponseEditarEstadoTipoVehiculo();
             response.setExito(false);
@@ -64,7 +62,7 @@ public class EditarEstadoTipoVehiculoUseCase {
             return response;
         }
         catch (Exception e){
-            String mensajeError = "Error inesperado al editar al usuario: " + e.getMessage();
+            String mensajeError = "Error inesperado al activar el Tipo Vehículo: " + e.getMessage();
             System.err.println("[ERROR] " + mensajeError);
             ResponseEditarEstadoTipoVehiculo response = new ResponseEditarEstadoTipoVehiculo();
             response.setExito(false);

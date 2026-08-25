@@ -31,7 +31,6 @@ public class UnidadMedidaService implements IUnidadMedidaListado, IUnidadMedidaD
         this.unidadMedidaDetalleRepository = unidadMedidaDetalleRepository;
     }
 
-
     @Override
     @Cacheable(value = "unidadMedida_lista", key = "#request.estado")
     public ResponseListaUnidadMedida listaUnidadMedida(RequestListaUnidadMedida request) {
