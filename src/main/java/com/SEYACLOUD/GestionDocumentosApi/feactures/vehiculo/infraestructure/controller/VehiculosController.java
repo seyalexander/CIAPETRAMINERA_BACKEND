@@ -1,20 +1,10 @@
 package com.SEYACLOUD.GestionDocumentosApi.feactures.vehiculo.infraestructure.controller;
 
-import com.SEYACLOUD.GestionDocumentosApi.feactures.conductor.application.dto.request.RequestEditarAllConductor;
-import com.SEYACLOUD.GestionDocumentosApi.feactures.conductor.application.dto.request.RequestRegistroConductor;
-import com.SEYACLOUD.GestionDocumentosApi.feactures.conductor.application.dto.response.ResponseDetalleConductor;
-import com.SEYACLOUD.GestionDocumentosApi.feactures.conductor.application.dto.response.ResponseEditarAllConductor;
-import com.SEYACLOUD.GestionDocumentosApi.feactures.conductor.application.dto.response.ResponseEditarEstadoConductor;
-import com.SEYACLOUD.GestionDocumentosApi.feactures.conductor.application.dto.response.ResponseRegistroConductor;
-import com.SEYACLOUD.GestionDocumentosApi.feactures.conductor.application.useCase.EdicionConductorEstadoUseCase;
-import com.SEYACLOUD.GestionDocumentosApi.feactures.conductor.application.useCase.EditarConductorAllUseCase;
-import com.SEYACLOUD.GestionDocumentosApi.feactures.conductor.application.useCase.RegistroConductorUseCase;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.vehiculo.application.dto.request.RequestEditarAllVehiculo;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.vehiculo.application.dto.request.RequestListaVehiculo;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.vehiculo.application.dto.request.RequestRegistroVehiculo;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.vehiculo.application.dto.response.*;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.vehiculo.application.useCase.*;
-import com.SEYACLOUD.GestionDocumentosApi.websockets.application.dto.NotificacionConductorDTO;
 import com.SEYACLOUD.GestionDocumentosApi.websockets.application.dto.NotificacionVehiculoDTO;
 import com.SEYACLOUD.GestionDocumentosApi.websockets.domain.services.NotificacionVehiculoService;
 import io.swagger.v3.oas.annotations.Operation;
