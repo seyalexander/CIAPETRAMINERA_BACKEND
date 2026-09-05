@@ -30,7 +30,7 @@ public class TransportistaListadoRepository implements ITransportistaListado {
         ResponseListaTransportista rpt = new ResponseListaTransportista();
         List<TransportistaModel> transportistas = new ArrayList<>();
 
-        String SQL = "{ call SEGURIDAD.sp_ListarUsuario (?) }";
+        String SQL = "{ call OPERACIONES.sp_ListarTransportistao (?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {

@@ -30,7 +30,7 @@ public class TipoVehiculoEditarRepository implements ITipoVehiculoEdicion {
     @Override
     public ResponseEditarAllTipoVehiculo EditarAllTipoVehiculo(RequestEditarAllTipoVehiculo request) {
         ResponseEditarAllTipoVehiculo rpt = new ResponseEditarAllTipoVehiculo();
-        String SQL = "{ call SEGURIDAD.sp_EditarRol(?,?,?,?) }";
+        String SQL = "{ call SEGURIDAD.sp_EditarTipoVehiculo(?,?,?,?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {

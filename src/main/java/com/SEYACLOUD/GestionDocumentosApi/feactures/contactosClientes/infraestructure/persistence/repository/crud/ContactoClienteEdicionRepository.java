@@ -26,7 +26,7 @@ public class ContactoClienteEdicionRepository implements IContactoClienteEdicion
     private DataSource con;
 
     @Override
-    public ResponseEditarAllContactoCliente EditarAllContactoCliente(RequestEditarAllContactoCliente request) {
+    public ResponseEditarAllContactoCliente EditarAllContactoCliente(RequestEditarAllContactoCliente request, long idUserAutenticado) {
         ResponseEditarAllContactoCliente rpt = new ResponseEditarAllContactoCliente();
         String SQL = "{ call CLIENTES.sp_EditarContactoCliente(?,?,?,?,?,?) }";
 
@@ -38,8 +38,7 @@ public class ContactoClienteEdicionRepository implements IContactoClienteEdicion
             pstmt.setString(3, request.getTelefono());
             pstmt.setString(4, request.getEmail());
             pstmt.setInt(5, request.getEstado());
-            Long userId = 1L;
-            pstmt.setLong(6, userId);
+            pstmt.setLong(6, idUserAutenticado);
 
             int rowsAffected = pstmt.executeUpdate();
             if (rowsAffected > 0) {
@@ -58,7 +57,7 @@ public class ContactoClienteEdicionRepository implements IContactoClienteEdicion
     }
 
     @Override
-    public ResponseEditarEstadoContactoCliente EditarEstadoContactoCliente(RequestEditarEstadoContactoCliente request, int estado) {
+    public ResponseEditarEstadoContactoCliente EditarEstadoContactoCliente(RequestEditarEstadoContactoCliente request, int estado, long idUserAutenticado) {
         ResponseEditarEstadoContactoCliente rpt = new ResponseEditarEstadoContactoCliente();
         String SQL = "{ call CLIENTES.sp_EditarContactoCliente_Estado(?,?,?) }";
 

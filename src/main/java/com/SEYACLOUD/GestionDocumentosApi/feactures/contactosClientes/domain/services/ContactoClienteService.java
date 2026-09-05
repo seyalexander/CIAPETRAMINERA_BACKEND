@@ -36,14 +36,14 @@ public class ContactoClienteService implements IContactoClienteDetalle, IContact
 
     @Override
     @CacheEvict(value = {"contactoCliente_detalle", "contactoCliente_listado"}, allEntries = true)
-    public ResponseEditarAllContactoCliente EditarAllContactoCliente(RequestEditarAllContactoCliente request) {
-        return contactoClienteEdicionRepository.EditarAllContactoCliente(request);
+    public ResponseEditarAllContactoCliente EditarAllContactoCliente(RequestEditarAllContactoCliente request, long idUserAutenticado) {
+        return contactoClienteEdicionRepository.EditarAllContactoCliente(request, idUserAutenticado);
     }
 
     @Override
     @CacheEvict(value = {"contactoCliente_detalle", "contactoCliente_listado"}, allEntries = true)
-    public ResponseEditarEstadoContactoCliente EditarEstadoContactoCliente(RequestEditarEstadoContactoCliente request, int estado) {
-        return contactoClienteEdicionRepository.EditarEstadoContactoCliente(request, estado);
+    public ResponseEditarEstadoContactoCliente EditarEstadoContactoCliente(RequestEditarEstadoContactoCliente request, int estado, long idUserAutenticado) {
+        return contactoClienteEdicionRepository.EditarEstadoContactoCliente(request, estado, idUserAutenticado);
     }
 
     @Override

@@ -40,8 +40,9 @@ public class TransportistaEdicionRepository implements ITransportistaEdicion {
             pstmt.setString(4, request.getRuc());
             pstmt.setString(5, request.getTelefono());
             pstmt.setString(6, request.getDireccion());
-            pstmt.setString(7, request.getDireccion());
+            pstmt.setString(7, request.getContacto());
             pstmt.setInt(8, request.getEstado());
+            pstmt.setLong(9, request.getIdTransportista()); // idUsuario
 
             int rowsAffected = pstmt.executeUpdate();
 
@@ -65,7 +66,7 @@ public class TransportistaEdicionRepository implements ITransportistaEdicion {
     public ResponseEditarEstadoTransportista editarEstadoTransportisa(RequestEditarEstadoTransportista request, int estado, long idUserAutenticado) {
         ResponseEditarEstadoTransportista rpt = new ResponseEditarEstadoTransportista();
 
-        String SQL = "{ call SEGURIDAD.sp_EditarUsuario_Estado(?,?,?) }";
+        String SQL = "{ call OPERACIONES.sp_EditarEstadoTransportista(?,?,?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {

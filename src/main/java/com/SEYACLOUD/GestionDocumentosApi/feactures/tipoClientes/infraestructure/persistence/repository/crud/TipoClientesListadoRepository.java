@@ -42,9 +42,29 @@ public class TipoClientesListadoRepository implements ITipoClientesListado {
             try (ResultSet rs = pstmt.executeQuery()) {
                 while (rs.next()) {
                     TipoClientesModel item = new TipoClientesModel();
-                item.setIdTipoCliente(rs.getLong("idTipoCliente"));
-                item.setDescripcion(rs.getString("descripcion"));
-                item.setEstado(rs.getInt("estado"));
+                    item.setIdTipoCliente(rs.getLong("idTipoCliente"));
+                    item.setDescripcion(rs.getString("descripcion"));
+                    item.setEstado(rs.getInt("estado"));
+                    item.setFechaCreacion(
+                            rs.getTimestamp("fechaCreacion") != null
+                                    ? rs.getTimestamp("fechaCreacion").toLocalDateTime()
+                                    : null
+                    );
+
+                    item.setFechaEdicion(
+                            rs.getTimestamp("fechaEdicion") != null
+                                    ? rs.getTimestamp("fechaEdicion").toLocalDateTime()
+                                    : null
+                    );
+
+                    item.setFechaAnulacion(
+                            rs.getTimestamp("fechaAnulacion") != null
+                                    ? rs.getTimestamp("fechaAnulacion").toLocalDateTime()
+                                    : null
+                    );
+                    item.setIdUsuarioCreacion(rs.getLong("idUsuarioCreacion"));
+                    item.setIdUsuarioEdicion(rs.getLong("idUsuarioEdicion"));
+                    item.setIdUsuarioAnulacion(rs.getLong("idUsuarioAnulacion"));
                     registros.add(item);
                 }
             }

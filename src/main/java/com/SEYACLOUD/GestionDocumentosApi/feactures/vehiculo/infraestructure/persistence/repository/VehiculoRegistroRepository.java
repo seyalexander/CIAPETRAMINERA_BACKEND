@@ -27,7 +27,7 @@ public class VehiculoRegistroRepository implements IVehiculoRegistro {
     public ResponseRegistroVehiculo registroVehiculo(RequestRegistroVehiculo request, long idUserAutenticado) {
         ResponseRegistroVehiculo rpt = new ResponseRegistroVehiculo();
 
-        String SQL = "{ call SEGURIDAD.sp_RegistroUsuario(?,?,?,?,?) }";
+        String SQL = "{ call OPERACIONES.sp_RegistroVehiculo(?,?,?,?,?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {

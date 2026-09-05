@@ -24,7 +24,7 @@ public class EditarConductorAllUseCase {
             }
 
             long userId = SecurityUtils.getCurrentUserId();
-            ResponseEditarAllConductor response = conductorService.editarAllConductor(request);
+            ResponseEditarAllConductor response = conductorService.editarAllConductor(request, userId);
             if(response.isExito()){}
 
             return response;

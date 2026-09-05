@@ -26,7 +26,7 @@ public class RegistroTipoClientesUseCase {
             // ===============================================================
             // Validar si la descripción enviada ya existe en la bd
             // ===============================================================
-            ResponseVerificarDescripcionTipoClientes respDescripcion = ValidaDescripcionTipoClienteUseCase.ValidaDescripcionTipoClientes(request.getDescripcion());
+            /*ResponseVerificarDescripcionTipoClientes respDescripcion = ValidaDescripcionTipoClienteUseCase.ValidaDescripcionTipoClientes(request.getDescripcion());
             if (!respDescripcion.isExito()) {
                 throw new IllegalArgumentException(respDescripcion.getMessage());
             }
@@ -40,7 +40,7 @@ public class RegistroTipoClientesUseCase {
                 throw new IllegalArgumentException(
                         "Ya existe un tipo de cliente con esta descripción. Intente con otra descripción o utilice el tipo de cliente existente."
                 );
-            }
+            }*/
 
             // ===============================================================
             // Enviando los valores a registrar

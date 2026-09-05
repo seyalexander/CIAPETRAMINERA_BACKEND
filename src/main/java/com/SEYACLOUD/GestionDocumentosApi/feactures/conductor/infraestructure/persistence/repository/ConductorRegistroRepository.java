@@ -26,7 +26,7 @@ public class ConductorRegistroRepository implements IConductorRegistro {
     public ResponseRegistroConductor registroConductor(RequestRegistroConductor request, long idUserAutenticado) {
         ResponseRegistroConductor rpt = new ResponseRegistroConductor();
 
-        String SQL = "{ call SEGURIDAD.sp_RegistroUsuario(?,?,?,?,?) }";
+        String SQL = "{ call OPERACIONES.sp_RegistroConductor(?,?,?,?,?,?,?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {

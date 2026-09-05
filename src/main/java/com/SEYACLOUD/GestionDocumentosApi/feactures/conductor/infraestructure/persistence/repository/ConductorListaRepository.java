@@ -32,7 +32,7 @@ public class ConductorListaRepository implements IConductorLista {
         ResponseListaConductor rpt = new ResponseListaConductor();
         List<ConductorModel> conductores = new ArrayList<>();
 
-        String SQL = "{ call SEGURIDAD.sp_ListarUsuario (?) }";
+        String SQL = "{ call OPERACIONES.sp_ListarConductor (?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {
@@ -44,13 +44,13 @@ public class ConductorListaRepository implements IConductorLista {
             while (rs.next()) {
                 ConductorModel conductor = new ConductorModel();
 
-                conductor.setIdConductor(rs.getLong("idTransportista"));
-                conductor.setIdTransportista(rs.getLong("idCliente"));
-                conductor.setNombres(rs.getString("razonSocial"));
-                conductor.setApellidos(rs.getString("ruc"));
-                conductor.setIdTipoDocumento(rs.getLong("idCliente"));
-                conductor.setDocumento(rs.getString("ruc"));
-                conductor.setLicencia(rs.getString("ruc"));
+                conductor.setIdConductor(rs.getLong("idConductor"));
+                conductor.setIdTransportista(rs.getLong("idTransportista"));
+                conductor.setNombres(rs.getString("nombres"));
+                conductor.setApellidos(rs.getString("apellidos"));
+                conductor.setIdTipoDocumento(rs.getLong("idTipoDocumento"));
+                conductor.setDocumento(rs.getString("documento"));
+                conductor.setLicencia(rs.getString("licencia"));
                 conductor.setTelefono(rs.getString("telefono"));
                 conductor.setEstado(rs.getInt("estado"));
                 conductor.setFechaCreacion(

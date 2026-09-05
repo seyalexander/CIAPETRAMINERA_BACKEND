@@ -1,4 +1,5 @@
 package com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.application.useCase;
+import com.SEYACLOUD.GestionDocumentosApi.config.SecurityUtils;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.application.dto.request.RequestEditarEstadoContactoCliente;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.application.dto.response.ResponseEditarEstadoContactoCliente;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.domain.services.ContactoClienteService;
@@ -15,8 +16,8 @@ public class EdicionContactoClienteEstadoUseCase {
         try {
             RequestEditarEstadoContactoCliente request = new RequestEditarEstadoContactoCliente();
             request.setIdContactoCliente(idContactoCliente);
-
-            ResponseEditarEstadoContactoCliente response = contactoClienteService.EditarEstadoContactoCliente(request, 0);
+            long userId = SecurityUtils.getCurrentUserId();
+            ResponseEditarEstadoContactoCliente response = contactoClienteService.EditarEstadoContactoCliente(request, 0, userId);
 
             if (response.isExito()) {
             }
@@ -48,8 +49,8 @@ public class EdicionContactoClienteEstadoUseCase {
         try {
             RequestEditarEstadoContactoCliente request = new RequestEditarEstadoContactoCliente();
             request.setIdContactoCliente(idContactoCliente);
-
-            ResponseEditarEstadoContactoCliente response = contactoClienteService.EditarEstadoContactoCliente(request, 1);
+            long userId = SecurityUtils.getCurrentUserId();
+            ResponseEditarEstadoContactoCliente response = contactoClienteService.EditarEstadoContactoCliente(request, 1, userId);
 
             if (response.isExito()) {
             }

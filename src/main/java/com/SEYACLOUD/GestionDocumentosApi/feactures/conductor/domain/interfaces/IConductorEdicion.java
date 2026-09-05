@@ -6,6 +6,6 @@ import com.SEYACLOUD.GestionDocumentosApi.feactures.conductor.application.dto.re
 import com.SEYACLOUD.GestionDocumentosApi.feactures.conductor.application.dto.response.ResponseEditarEstadoConductor;
 
 public interface IConductorEdicion {
-    ResponseEditarAllConductor editarAllConductor(RequestEditarAllConductor request);
+    ResponseEditarAllConductor editarAllConductor(RequestEditarAllConductor request, long idUserAutenticado);
     ResponseEditarEstadoConductor editarEstadoConductor(RequestEditarEstadoConductor request, int estado, long idUserAutenticado);
 }

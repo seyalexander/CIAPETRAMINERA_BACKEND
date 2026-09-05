@@ -1,5 +1,6 @@
 package com.SEYACLOUD.GestionDocumentosApi.feactures.clientes.application.useCase;
 
+import com.SEYACLOUD.GestionDocumentosApi.config.SecurityUtils;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.clientes.application.dto.request.RequestEditarAllCliente;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.clientes.application.dto.response.ResponseEditarAllCliente;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.clientes.domain.services.ClienteService;
@@ -16,7 +17,8 @@ public class EdicionClienteAllUseCase {
 
     public ResponseEditarAllCliente EdicionAllCliente(RequestEditarAllCliente request) {
         try {
-            ResponseEditarAllCliente response = clienteService.EditarAllCliente(request);
+            long userId = SecurityUtils.getCurrentUserId();
+            ResponseEditarAllCliente response = clienteService.EditarAllCliente(request, userId);
             if(response.isExito()){}
 
             return response;

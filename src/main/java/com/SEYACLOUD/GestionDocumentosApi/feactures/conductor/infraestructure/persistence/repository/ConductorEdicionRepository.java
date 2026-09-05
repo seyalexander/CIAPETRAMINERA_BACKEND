@@ -24,10 +24,10 @@ public class ConductorEdicionRepository implements IConductorEdicion {
     private DataSource con;
 
     @Override
-    public ResponseEditarAllConductor editarAllConductor(RequestEditarAllConductor request) {
+    public ResponseEditarAllConductor editarAllConductor(RequestEditarAllConductor request, long idUserAutenticado) {
         ResponseEditarAllConductor rpt = new ResponseEditarAllConductor();
 
-        String SQL = "{ call SEGURIDAD.sp_EditarUsuario(?,?,?,?,?,?,?) }";
+        String SQL = "{ call OPERACIONES.sp_EditarConductor(?,?,?,?,?,?,?,?,?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {
@@ -64,7 +64,7 @@ public class ConductorEdicionRepository implements IConductorEdicion {
     public ResponseEditarEstadoConductor editarEstadoConductor(RequestEditarEstadoConductor request, int estado, long idUserAutenticado) {
         ResponseEditarEstadoConductor rpt = new ResponseEditarEstadoConductor();
 
-        String SQL = "{ call SEGURIDAD.sp_EditarUsuario_Estado(?,?,?) }";
+        String SQL = "{ call OPERACIONES.sp_EditarEstadoConductor(?,?,?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {

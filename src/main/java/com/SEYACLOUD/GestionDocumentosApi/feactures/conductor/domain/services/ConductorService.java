@@ -51,8 +51,8 @@ public class ConductorService implements IConductorLista, IConductorDetalle, ICo
 
     @Override
     @CacheEvict(value = {"conductores_lista", "conductores_detalle"}, allEntries = true)
-    public ResponseEditarAllConductor editarAllConductor(RequestEditarAllConductor request) {
-        return conductorEdicionRepository.editarAllConductor(request);
+    public ResponseEditarAllConductor editarAllConductor(RequestEditarAllConductor request, long idUserAutenticado) {
+        return conductorEdicionRepository.editarAllConductor(request, idUserAutenticado);
     }
 
     @Override

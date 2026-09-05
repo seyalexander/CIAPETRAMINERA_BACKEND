@@ -6,6 +6,6 @@ import com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.applicatio
 import com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.application.dto.response.ResponseEditarEstadoContactoCliente;
 
 public interface IContactoClienteEdicion {
-    ResponseEditarAllContactoCliente EditarAllContactoCliente(RequestEditarAllContactoCliente request);
-    ResponseEditarEstadoContactoCliente EditarEstadoContactoCliente(RequestEditarEstadoContactoCliente request, int estado);
+    ResponseEditarAllContactoCliente EditarAllContactoCliente(RequestEditarAllContactoCliente request, long idUserAutenticado);
+    ResponseEditarEstadoContactoCliente EditarEstadoContactoCliente(RequestEditarEstadoContactoCliente request, int estado, long idUserAutenticado);
 }

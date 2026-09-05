@@ -30,7 +30,7 @@ public class VehiculoListaRepository implements IVehiculoListado {
         ResponseListaVehiculo rpt = new ResponseListaVehiculo();
         List<VehiculoModel> vehiculos = new ArrayList<>();
 
-        String SQL = "{ call SEGURIDAD.sp_ListarUsuario (?) }";
+        String SQL = "{ call OPERACIONES.sp_ListarVehiculo (?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {

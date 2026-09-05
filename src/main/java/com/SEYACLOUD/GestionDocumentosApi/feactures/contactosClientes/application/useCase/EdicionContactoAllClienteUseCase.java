@@ -1,5 +1,6 @@
 package com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.application.useCase;
 
+import com.SEYACLOUD.GestionDocumentosApi.config.SecurityUtils;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.application.dto.request.RequestEditarAllContactoCliente;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.application.dto.response.ResponseEditarAllContactoCliente;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.contactosClientes.domain.services.ContactoClienteService;
@@ -14,8 +15,8 @@ public class EdicionContactoAllClienteUseCase {
     }
     public ResponseEditarAllContactoCliente EdicionAllContactoCliente(RequestEditarAllContactoCliente request) {
         try {
-
-            ResponseEditarAllContactoCliente response = contactoClienteService.EditarAllContactoCliente(request);
+            long userId = SecurityUtils.getCurrentUserId();
+            ResponseEditarAllContactoCliente response = contactoClienteService.EditarAllContactoCliente(request, userId);
 
             if (response.isExito()) {
             }

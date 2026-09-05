@@ -31,7 +31,7 @@ public class VehiculoDetalleRepository implements IVehiculoDetalle {
         ResponseDetalleVehiculo response = new ResponseDetalleVehiculo();
         VehiculoModel vehiculo = null;
 
-        String SQL = "{ call SEGURIDAD.sp_ObtenerUsuarioPorId(?) }";
+        String SQL = "{ call OPERACIONES.sp_ObtenerVehiculoPorId(?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {

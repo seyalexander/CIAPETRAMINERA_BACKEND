@@ -1,5 +1,6 @@
 package com.SEYACLOUD.GestionDocumentosApi.feactures.clientes.application.useCase;
 
+import com.SEYACLOUD.GestionDocumentosApi.config.SecurityUtils;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.clientes.application.dto.request.RequestEditarEstadoCliente;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.clientes.application.dto.response.ResponseEditarEstadoCliente;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.clientes.domain.services.ClienteService;
@@ -15,9 +16,11 @@ public class EdicionClienteEstadoUseCase {
 
     public ResponseEditarEstadoCliente AnularCliente(long id) {
         try {
+
             RequestEditarEstadoCliente request = new RequestEditarEstadoCliente();
             request.setIdCliente(id);
-            ResponseEditarEstadoCliente response = clienteService.EditarEstadoCliente(request,0);
+            long userId = SecurityUtils.getCurrentUserId();
+            ResponseEditarEstadoCliente response = clienteService.EditarEstadoCliente(request,0, userId);
             if(response.isExito()){}
             return response;
 
@@ -41,7 +44,8 @@ public class EdicionClienteEstadoUseCase {
         try {
             RequestEditarEstadoCliente request = new RequestEditarEstadoCliente();
             request.setIdCliente(id);
-            ResponseEditarEstadoCliente response = clienteService.EditarEstadoCliente(request,1);
+            long userId = SecurityUtils.getCurrentUserId();
+            ResponseEditarEstadoCliente response = clienteService.EditarEstadoCliente(request,1, userId);
             if(response.isExito()){}
             return response;
 

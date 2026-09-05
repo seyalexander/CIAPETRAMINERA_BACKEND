@@ -32,13 +32,13 @@ public class ClienteService implements IClienteDetalle, IClienteEdicion, IClient
     }
 
     @Override
-    public ResponseEditarAllCliente EditarAllCliente(RequestEditarAllCliente request) {
-        return clienteEdicionRepository.EditarAllCliente(request);
+    public ResponseEditarAllCliente EditarAllCliente(RequestEditarAllCliente request, long userAutenticado) {
+        return clienteEdicionRepository.EditarAllCliente(request, userAutenticado);
     }
 
     @Override
-    public ResponseEditarEstadoCliente EditarEstadoCliente(RequestEditarEstadoCliente request, int estado) {
-        return clienteEdicionRepository.EditarEstadoCliente(request, estado);
+    public ResponseEditarEstadoCliente EditarEstadoCliente(RequestEditarEstadoCliente request, int estado, long userAutenticado) {
+        return clienteEdicionRepository.EditarEstadoCliente(request, estado, userAutenticado);
     }
 
     @Override

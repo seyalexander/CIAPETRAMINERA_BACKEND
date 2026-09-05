@@ -3,7 +3,6 @@ package com.SEYACLOUD.GestionDocumentosApi.feactures.tipoVehiculo.infraestructur
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoVehiculo.application.dto.request.RequestRegistroTipoVehiculo;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoVehiculo.application.dto.response.ResponseRegistroTipoVehiculo;
 import com.SEYACLOUD.GestionDocumentosApi.feactures.tipoVehiculo.domain.interfaces.ITipoVehiculoRegistro;
-import com.SEYACLOUD.GestionDocumentosApi.feactures.usuarios.application.dto.response.ResponseRegistroUsuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -26,7 +25,7 @@ public class TipoVehiculoRegistroRepository implements ITipoVehiculoRegistro {
     public ResponseRegistroTipoVehiculo RegistroTipoVehiculo(RequestRegistroTipoVehiculo request, long idUserAutenticado) {
         ResponseRegistroTipoVehiculo rpt = new ResponseRegistroTipoVehiculo();
 
-        String SQL = "{ call SEGURIDAD.sp_RegistroUsuario(?,?) }";
+        String SQL = "{ call OPERACIONES.sp_RegistroTipoVehiculo(?,?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {

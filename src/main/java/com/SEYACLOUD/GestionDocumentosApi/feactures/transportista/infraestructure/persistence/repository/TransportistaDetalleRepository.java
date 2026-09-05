@@ -31,7 +31,7 @@ public class TransportistaDetalleRepository implements ITransportistaDetalle {
         ResponseDetalleTransportista response = new ResponseDetalleTransportista();
         TransportistaModel transportista = null;
 
-        String SQL = "{ call SEGURIDAD.sp_ObtenerUsuarioPorId(?) }";
+        String SQL = "{ call OPERACIONES.sp_ObtenerTransportistaPorId(?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {

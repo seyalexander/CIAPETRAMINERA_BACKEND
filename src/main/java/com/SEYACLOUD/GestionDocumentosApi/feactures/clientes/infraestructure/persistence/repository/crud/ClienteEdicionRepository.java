@@ -26,7 +26,7 @@ public class ClienteEdicionRepository implements IClienteEdicion {
     private DataSource con;
 
     @Override
-    public ResponseEditarAllCliente EditarAllCliente(RequestEditarAllCliente request) {
+    public ResponseEditarAllCliente EditarAllCliente(RequestEditarAllCliente request, long userAutenticado) {
         ResponseEditarAllCliente rpt = new ResponseEditarAllCliente();
         String SQL = "{ call CLIENTES.sp_EditarCliente(?,?,?,?,?,?,?,?,?,?,?) }";
 
@@ -64,7 +64,7 @@ public class ClienteEdicionRepository implements IClienteEdicion {
     }
 
     @Override
-    public ResponseEditarEstadoCliente EditarEstadoCliente(RequestEditarEstadoCliente request, int estado) {
+    public ResponseEditarEstadoCliente EditarEstadoCliente(RequestEditarEstadoCliente request, int estado, long userAutenticado) {
         ResponseEditarEstadoCliente rpt = new ResponseEditarEstadoCliente();
         String SQL = "{ call CLIENTES.sp_EditarCliente_Estado(?,?,?) }";
 

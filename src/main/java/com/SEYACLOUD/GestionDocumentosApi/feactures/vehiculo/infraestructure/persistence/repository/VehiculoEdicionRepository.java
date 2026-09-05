@@ -30,7 +30,7 @@ public class VehiculoEdicionRepository implements IVehiculoEdicion {
     public ResponseEditarAllVehiculo editarAllVehiculo(RequestEditarAllVehiculo request) {
         ResponseEditarAllVehiculo rpt = new ResponseEditarAllVehiculo();
 
-        String SQL = "{ call SEGURIDAD.sp_EditarUsuario(?,?,?,?,?,?,?) }";
+        String SQL = "{ call OPERACIONES.sp_EditarVehiculo(?,?,?,?,?,?,?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {
@@ -66,7 +66,7 @@ public class VehiculoEdicionRepository implements IVehiculoEdicion {
     public ResponseEditarEstadoVehiculo editarEstadoVehiculo(RequestEditarEstadoVehiculo request, int estado, long idUserAutenticado) {
         ResponseEditarEstadoVehiculo rpt = new ResponseEditarEstadoVehiculo();
 
-        String SQL = "{ call SEGURIDAD.sp_EditarUsuario_Estado(?,?,?) }";
+        String SQL = "{ call OPERACIONES.sp_EditarVehiculo_Estado(?,?,?) }";
 
         try (Connection conn = con.getConnection();
              CallableStatement pstmt = conn.prepareCall(SQL)) {
